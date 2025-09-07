@@ -1,0 +1,32 @@
+{
+  "name": "Instamobile",
+  "displayName": "Yasta Conductor",
+  "slug": "YastaConductor",
+  "plugins": [
+    "expo-tracking-transparency",
+    "@react-native-google-signin/google-signin"
+  ],
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "expo": {
+    "version":"1.0.0",
+    "android": {
+      "package": "io.driverapp",
+      "versionCode": 1,
+      "googleServicesFile": "./android/app/google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "io.ios.appdriver",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "googleServicesFile": "./ios/Instamobile/GoogleService-Info.plist"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4370bd68-66ab-4e0f-a3ac-94a7c2676fac"
+      }
+    },
+    "owner": "jairo_2219"
+  }
+}

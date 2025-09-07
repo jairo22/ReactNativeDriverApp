@@ -1,0 +1,190 @@
+{
+  "project_info": {
+    "project_number": "589084856582",
+    "project_id": "yasta-bfd20",
+    "storage_bucket": "yasta-bfd20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589084856582:android:e8b207ce522504c5a08e87",
+        "android_client_info": {
+          "package_name": "io.appvendormanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmrHAdhdrqP6zqRgT240DCYTYarMQgPwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589084856582-m48s2br9k0c88un78lg1gtqs8lm38b62.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.instamobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589084856582:android:0a63e5a96ff5ebbca08e87",
+        "android_client_info": {
+          "package_name": "io.driverapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmrHAdhdrqP6zqRgT240DCYTYarMQgPwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589084856582-m48s2br9k0c88un78lg1gtqs8lm38b62.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.instamobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589084856582:android:1468ddf497a1340da08e87",
+        "android_client_info": {
+          "package_name": "io.instamobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmrHAdhdrqP6zqRgT240DCYTYarMQgPwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589084856582-m48s2br9k0c88un78lg1gtqs8lm38b62.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.instamobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589084856582:android:33266bb87df03d82a08e87",
+        "android_client_info": {
+          "package_name": "io.multivendor3on1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmrHAdhdrqP6zqRgT240DCYTYarMQgPwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589084856582-m48s2br9k0c88un78lg1gtqs8lm38b62.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.instamobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589084856582:android:739ba3756f4d1ec3a08e87",
+        "android_client_info": {
+          "package_name": "yasta.pack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmrHAdhdrqP6zqRgT240DCYTYarMQgPwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589084856582-ar1bhcgrqpgnf0ggm16fjtodbl9vvuho.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589084856582-m48s2br9k0c88un78lg1gtqs8lm38b62.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.instamobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

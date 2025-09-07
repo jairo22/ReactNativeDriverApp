@@ -1,0 +1,121 @@
+diff --git a/node_modules/react-native-search-bar/.DS_Store b/node_modules/react-native-search-bar/.DS_Store
+old mode 100644
+new mode 100755
+index 5008ddf..9755389
+Binary files a/node_modules/react-native-search-bar/.DS_Store and b/node_modules/react-native-search-bar/.DS_Store differ
+diff --git a/node_modules/react-native-search-bar/.editorconfig b/node_modules/react-native-search-bar/.editorconfig
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/.eslintignore b/node_modules/react-native-search-bar/.eslintignore
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/.eslintrc b/node_modules/react-native-search-bar/.eslintrc
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/.github/SearchBar.png b/node_modules/react-native-search-bar/.github/SearchBar.png
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/.prettierrc b/node_modules/react-native-search-bar/.prettierrc
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/LICENSE b/node_modules/react-native-search-bar/LICENSE
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/README.md b/node_modules/react-native-search-bar/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/RNSearchBar.podspec b/node_modules/react-native-search-bar/RNSearchBar.podspec
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/build.gradle b/node_modules/react-native-search-bar/android/build.gradle
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/src/main/AndroidManifest.xml b/node_modules/react-native-search-bar/android/src/main/AndroidManifest.xml
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/Command.java b/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/Command.java
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarManager.java b/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarManager.java
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarModule.java b/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarModule.java
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarPackage.java b/node_modules/react-native-search-bar/android/src/main/java/org/umhan35/RNSearchBarPackage.java
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/ios/.DS_Store b/node_modules/react-native-search-bar/ios/.DS_Store
+new file mode 100644
+index 0000000..fb3554a
+Binary files /dev/null and b/node_modules/react-native-search-bar/ios/.DS_Store differ
+diff --git a/node_modules/react-native-search-bar/ios/RNSearchBar.h b/node_modules/react-native-search-bar/ios/RNSearchBar.h
+old mode 100644
+new mode 100755
+index e8805b6..685510a
+--- a/node_modules/react-native-search-bar/ios/RNSearchBar.h
++++ b/node_modules/react-native-search-bar/ios/RNSearchBar.h
+@@ -8,7 +8,8 @@
+ - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher NS_DESIGNATED_INITIALIZER;
+ 
+ @property(nonatomic) BOOL _jsShowsCancelButton;
+-@property(nonatomic, copy) RCTBubblingEventBlock onSearchButtonPress;
+-@property(nonatomic, copy) RCTBubblingEventBlock onCancelButtonPress;
+-
++//@property(nonatomic, copy) RCTBubblingEventBlock onSearchButtonPress;
++//@property(nonatomic, copy) RCTBubblingEventBlock onCancelButtonPress;
++@property(nonatomic, copy) RCTDirectEventBlock onSearchButtonPress;
++@property(nonatomic, copy) RCTDirectEventBlock onCancelButtonPress;
+ @end
+diff --git a/node_modules/react-native-search-bar/ios/RNSearchBar.m b/node_modules/react-native-search-bar/ios/RNSearchBar.m
+old mode 100644
+new mode 100755
+index 8b07391..794b3d3
+--- a/node_modules/react-native-search-bar/ios/RNSearchBar.m
++++ b/node_modules/react-native-search-bar/ios/RNSearchBar.m
+@@ -71,11 +71,12 @@ - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+ 
+ - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+ {
++  NSLog(@"[RNSearchBar] Cancel button clicked"); // <-- log temporal
+     self.text = @"";
+     [self resignFirstResponder];
+     [self setShowsCancelButton:NO animated:YES];
+     
+-    self.onCancelButtonPress(@{});
++   // self.onCancelButtonPress(@{});
+ }
+ 
+ @end
+diff --git a/node_modules/react-native-search-bar/ios/RNSearchBar.xcodeproj/project.pbxproj b/node_modules/react-native-search-bar/ios/RNSearchBar.xcodeproj/project.pbxproj
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/ios/RNSearchBarManager.h b/node_modules/react-native-search-bar/ios/RNSearchBarManager.h
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/ios/RNSearchBarManager.m b/node_modules/react-native-search-bar/ios/RNSearchBarManager.m
+old mode 100644
+new mode 100755
+index 8c4e61e..1b3613d
+--- a/node_modules/react-native-search-bar/ios/RNSearchBarManager.m
++++ b/node_modules/react-native-search-bar/ios/RNSearchBarManager.m
+@@ -46,8 +46,8 @@ + (BOOL)requiresMainQueueSetup
+     return YES;
+ }
+ 
+-RCT_EXPORT_VIEW_PROPERTY(onSearchButtonPress, RCTBubblingEventBlock)
+-RCT_EXPORT_VIEW_PROPERTY(onCancelButtonPress, RCTBubblingEventBlock)
++RCT_EXPORT_VIEW_PROPERTY(onSearchButtonPress, RCTDirectEventBlock)
++RCT_EXPORT_VIEW_PROPERTY(onCancelButtonPress, RCTDirectEventBlock)
+ RCT_EXPORT_VIEW_PROPERTY(placeholder, NSString)
+ RCT_EXPORT_VIEW_PROPERTY(text, NSString)
+ RCT_CUSTOM_VIEW_PROPERTY(showsCancelButton, BOOL, RNSearchBar)
+diff --git a/node_modules/react-native-search-bar/src/SearchBar.js b/node_modules/react-native-search-bar/src/SearchBar.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/src/index.d.ts b/node_modules/react-native-search-bar/src/index.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-native-search-bar/src/index.js b/node_modules/react-native-search-bar/src/index.js
+old mode 100644
+new mode 100755

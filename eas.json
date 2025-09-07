@@ -1,0 +1,16 @@
+{
+  "cli": {
+    "version": ">= 4.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "production": {
+      "ios": {
+        "distribution": "store",
+        "simulator": false,
+         "image": "macos-sequoia-15.5-xcode-16.4"
+      }
+    }
+  }
+ 
+}

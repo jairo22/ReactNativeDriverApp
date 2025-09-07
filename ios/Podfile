@@ -1,0 +1,105 @@
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
+
+# Resolver react_native_pods.rb con node para permitir hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve("react-native/scripts/react_native_pods.rb", {paths: [process.argv[1]]})', __dir__]).strip
+
+prepare_react_native_project!
+
+platform :ios, '13.0'
+install! 'cocoapods', :deterministic_uuids => false
+
+production = ENV["PRODUCTION"] == "1"
+
+require 'json'
+podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {}
+
+target 'Instamobile' do
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
+
+  use_expo_modules!
+
+  config = use_native_modules!
+
+  flags = get_default_flags()
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :production => production,
+    :hermes_enabled => flags[:hermes_enabled],
+    :fabric_enabled => flags[:fabric_enabled],
+    :flipper_configuration => FlipperConfiguration.disabled,
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  # Pods adicionales
+  pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
+  pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
+  pod 'Braintree', '~> 4'
+  pod 'Braintree/DataCollector'
+
+  post_integrate do |installer|
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
+  end
+
+  post_install do |installer|
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false
+    )
+
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
+   # 🔧 Remueve el flag -G del target problemático
+  installer.pods_project.targets.each do |target|
+    if target.name == 'BoringSSL-GRPC'
+      target.build_configurations.each do |config|
+        flags = config.build_settings['OTHER_CPLUSPLUSFLAGS']
+        if flags.is_a?(Array)
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] = flags.reject { |flag| flag == '-G' }
+        elsif flags.is_a?(String)
+          config.build_settings['OTHER_CPLUSPLUSFLAGS'] = flags.gsub(/\s*-G\s*/, ' ')
+        end
+      end
+    end
+  end
+
+   bitcode_strip_path = `xcrun --find bitcode_strip`.chop!
+   def strip_bitcode_from_framework(bitcode_strip_path, framework_relative_path)
+     framework_path = File.join(Dir.pwd, framework_relative_path)
+     command = "#{bitcode_strip_path} #{framework_path} -r -o #{framework_path}"
+     puts "Stripping bitcode: #{command}"
+     system(command)
+   end
+
+   framework_paths = [
+     "Pods/LogRocket/LogRocket.xcframework/ios-arm64/LogRocket.framework/LogRocket",
+     "Pods/hermes-engine/destroot/Library/Frameworks/macosx/hermes.framework/hermes",
+     "Pods/hermes-engine/destroot/Library/Frameworks/macosx/hermes.framework/Versions/Current/hermes",
+     "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework/ios-arm64/hermes.framework/hermes",
+     "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework/ios-arm64_x86_64-maccatalyst/hermes.framework/hermes"
+   ]
+
+   framework_paths.each do |framework_relative_path|
+     strip_bitcode_from_framework(bitcode_strip_path, framework_relative_path)
+   end
+      
+  
+    # ✅ Fix para FBReactNativeSpec
+    installer.pods_project.targets.each do |target|
+      if target.name == 'FBReactNativeSpec'
+        target.build_phases.each do |build_phase|
+          if build_phase.respond_to?(:name) && build_phase.name == '[CP-User] Generate Specs'
+            target.build_phases.move(build_phase, 0)
+          end
+        end
+      end
+    end
+  end
+end
